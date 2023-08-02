@@ -1,0 +1,18 @@
+<?php
+/** @var $block Magento\Framework\View\Element\Template */
+/** @var $escaper Magento\Framework\Escaper */
+/** @var $postVm TechDriven\Blog\ViewModel\Post*/
+$postVm = $block->getData('post_vm');
+?>
+<div class="blog-post-sidebar">
+    <p><strong><?=__('Other blog post')?></strong></p>
+    <ul>
+        <?php foreach ($postVm->getList() as $post): ?>
+            <li>
+                <a href="<?=$block->getUrl('*/post/detail', ['id' => $post->getData('id')])?>">
+                    <?=$escaper->escapeHtml($post->getData('title'));?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
